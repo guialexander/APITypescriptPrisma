@@ -1,11 +1,11 @@
 import { Router } from 'express';
 
 import {
- // createUserHandler,
- // deleteUserHandler,
   getAllUserHandler,
-  //getUserHandler,
-  //updateUserHandler,
+  createUserHandler,
+  deleteUserHandler,
+  getUserHandler,
+  updateUserHandler,
 } from './user.controller';
 
 const router = Router();
@@ -14,15 +14,15 @@ const router = Router();
 router.get('/', getAllUserHandler);
 
 // /api/users -> POST
-//router.post('/', createUserHandler);
+router.post('/', createUserHandler);
 
 // /api/users/:id -> GET
-//router.get('/:id', getUserHandler);
+router.get('/:id', getUserHandler);
 
 // /api/users/:id -> DELETE
-//router.delete('/:id', deleteUserHandler);
+router.delete('/:id', deleteUserHandler);
 
 // /api/users/:id -> PATCH
-//router.patch('/:id', updateUserHandler);
+router.patch('/:id', updateUserHandler);
 
 export default router;
