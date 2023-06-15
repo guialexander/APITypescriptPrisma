@@ -1,12 +1,11 @@
 import { Request, Response } from 'express';
 
 import {
-  //createUser,
-  //deleteUser,
+  createReview,
+  deleteReview,
   getAllReviews,
-  //getUserByEmail,
- // getUserById,
- // updateUser,
+  getReviewById,
+  updateReview,
 } from './reviews.service';
 
 export async function getAllReviewsHandler(req: Request, res: Response) {
@@ -14,43 +13,64 @@ export async function getAllReviewsHandler(req: Request, res: Response) {
 
   return res.json(users);
 }
-/*
-export async function createUserHandler(req: Request, res: Response) {
+
+
+export async function createReviewHandler(req: Request, res: Response) {
+  const data = req.body;
+  try{
+    const Review = await createReview(data);
+    return res.json(Review);
+    }
+    catch (error: any) {
+    console.log(error);
+}
+
+}
+
+
+export async function getReviewHandler(req: Request, res: Response) {
+  const { id } = req.params;
+
+  const Review = await getReviewById(id);
+
+  if (!Review) {
+    return res.status(404).json({
+      message: 'User not found',
+    });
+  }
+
+  return res.json(Review);
+}
+
+export async function deleteReviewHandler(req: Request, res: Response) {
+  const { id } = req.params;
+
+  const Review = await getReviewById(id);
+
+  if (!Review) {
+    return res.status(404).json({
+      message: 'User not found',
+    });
+  }
+
+ // await deleteReview(id);
+
+  return res.json(Review);
+}
+
+export async function updateReviewHandler(req: Request, res: Response) {
+  const { id } = req.params;
   const data = req.body;
 
-  const user = await createUser(data);
+  const Review = await getReviewById(id);
 
-  return res.json(user);
-}
-
-export async function getUserHandler(req: Request, res: Response) {
-  const { id } = req.params;
-
-  const user = await getUserById(id);
-
-  if (!user) {
+  if (!Review) {
     return res.status(404).json({
       message: 'User not found',
     });
   }
 
-  return res.json(user);
+  const updatedReview = await updateReview({ ...data, id });
+
+  return res.json(updatedReview);
 }
-
-export async function deleteUserHandler(req: Request, res: Response) {
-  const { id } = req.params;
-
-  const user = await getUserById(id);
-
-  if (!user) {
-    return res.status(404).json({
-      message: 'User not found',
-    });
-  }
-
-  await deleteUser(id);
-
-  return res.json(user);
-}
-
-export async function updateUserHandler(req: Request, res: Response) {}*/

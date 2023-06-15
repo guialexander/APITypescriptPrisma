@@ -8,53 +8,43 @@ export async function getAllPost() {
   const posts = await prisma.posts.findMany();
   return posts;
 }
-/*
-export async function createUser(data: User) {
-  const user = await prisma.users.create({
+
+export async function createPost(data: Posts) {
+  const post = await prisma.posts.create({
     data,
   });
 
-  return user;
+  return post;
 }
 
-export async function getUserById(id: string) {
-  const user = await prisma.users.findUnique({
+export async function getPostById(id: string) {
+  const post = await prisma.posts.findUnique({
     where: {
       id,
     },
   });
 
-  return user;
+  return post;
 }
 
-export async function getUserByEmail(email: string) {
-  const user = await prisma.users.findUnique({
-    where: {
-      email,
-    },
-  });
-
-  return user;
-}
-
-export async function deleteUser(id: string) {
-  const user = await prisma.users.delete({
+export async function deletePost(id: string) {
+  const post = await prisma.posts.delete({
     where: {
       id,
     },
   });
 
-  return user;
+  return post;
 }
 
-export async function updateUser(data: User) {
-  const user = await prisma.users.update({
+export async function updatePost(data: Posts) {
+  const post = await prisma.posts.update({
     where: {
       id: data.id,
     },
     data,
   });
 
-  return user;
+  return post;
 }
-*/
+

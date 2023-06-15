@@ -8,53 +8,43 @@ export async function getAllReviews() {
   const reviews= await prisma.reviews.findMany();
   return reviews;
 }
-/*
-export async function createUser(data: User) {
-  const user = await prisma.users.create({
+
+export async function createReview(data: Reviews) {
+  const Review = await prisma.reviews.create({
     data,
   });
 
-  return user;
+  return Review;
 }
 
-export async function getUserById(id: string) {
-  const user = await prisma.users.findUnique({
+export async function getReviewById(id: string) {
+  const Review = await prisma.reviews.findUnique({
     where: {
       id,
     },
   });
 
-  return user;
+  return Review;
 }
 
-export async function getUserByEmail(email: string) {
-  const user = await prisma.users.findUnique({
-    where: {
-      email,
-    },
-  });
-
-  return user;
-}
-
-export async function deleteUser(id: string) {
-  const user = await prisma.users.delete({
+export async function deleteReview(id: string) {
+  const Review = await prisma.reviews.delete({
     where: {
       id,
     },
   });
 
-  return user;
+  return Review;
 }
 
-export async function updateUser(data: User) {
-  const user = await prisma.users.update({
+export async function updateReview(data: Reviews) {
+  const Review = await prisma.reviews.update({
     where: {
       id: data.id,
     },
     data,
   });
 
-  return user;
+  return Review;
 }
-*/
+
